@@ -32,8 +32,7 @@ stage('Docker Build and Tag') {
   stage('Publish image to Docker Hub') {
           
             steps {
-                 docker.withRegistry( '', registryCredential ) {
-                   //withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+                   withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
                    sh  'docker push muthudevopslearner/addressbook:v1'
                    //  sh  'docker push muthudevopslearner/addressbook:$BUILD_NUMBER' 
                   }     
