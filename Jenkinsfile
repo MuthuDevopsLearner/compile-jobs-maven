@@ -35,25 +35,8 @@ stage('Docker Build and Tag') {
         withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
           sh  'docker push muthudevopslearner/addressbook:v1'
         //  sh  'docker push muthudevopslearner/addressbook:$BUILD_NUMBER' 
-        }
-                  
-          }
-        }
-     
-      stage('Run Docker container on Jenkins Agent') {
-             
-            steps 
-   {
-                sh "docker run -d -p 8081:80 muthudevopslearner/addressbook"
- 
-            }
-        }
- stage('Run Docker container on remote hosts') {
-             
-            steps {
-                sh "docker -H ssh://jenkins@192.168.230.135 run -d -p 8081:80 muthudevopslearner/addressbook"
- 
-            }
-        }
-    }
+                       }     
+                   }
+              }
+     }
  }
