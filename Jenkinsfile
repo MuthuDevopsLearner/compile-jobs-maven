@@ -23,7 +23,7 @@ stage('Docker Build and Tag') {
            steps {
                 sh 'docker images'
                 sh 'docker build -t addressbookapp:v1 .' 
-                sh 'docker tag addressbookapp muthudevopslearner/addressbook:v1'
+                sh 'docker tag addressbookapp:v1 muthudevopslearner/addressbook:v1'
                 //sh 'docker tag addressbookapp muthudevopslearner/addressbook:$BUILD_NUMBER'
                
           }
