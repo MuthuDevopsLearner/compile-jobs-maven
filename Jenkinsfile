@@ -1,4 +1,7 @@
 pipeline {
+    environment {
+                registryCredential = 'dockerhubtestid'
+                }
     agent any
  
    //tools
@@ -32,7 +35,7 @@ stage('Docker Build and Tag') {
   stage('Publish image to Docker Hub') {
           
             steps {
-                   registryCredential = 'dockerhubtestid'
+                   
                    docker.withRegistry( '', registryCredential ) {
                    //withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
                       
