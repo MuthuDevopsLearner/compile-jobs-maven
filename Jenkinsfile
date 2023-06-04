@@ -36,7 +36,7 @@ stage('Docker Build and Tag') {
           
             steps {
                    
-                   docker.withRegistry( '', registryCredential ) {
+                   withDockerRegistry( '', registryCredential ) {
                    //withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
                       
                    sh "echo 'Logged In.. Into Docker.'"
