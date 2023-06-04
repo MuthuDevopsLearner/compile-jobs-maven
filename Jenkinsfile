@@ -48,7 +48,8 @@ stage('Docker Build and Tag') {
           {
                  steps {
                         scripts {
-                               kubernetesDeploy(Configs: "addressbook.yml", kubeconfigId:"kubernetes")
+                               //kubernetesDeploy(Configs: "addressbook.yml", kubeconfigId:"kubernetes")
+                               sh 'kubectl create -f addressbook.yml'
                         }
                                
                  }
