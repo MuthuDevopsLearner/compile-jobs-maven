@@ -1,8 +1,5 @@
 pipeline {
-    environment {
-                registryCredential = 'dockerhubtestid'
-                }
-    agent any
+       agent any
  
    //tools
     //{
@@ -36,8 +33,8 @@ stage('Docker Build and Tag') {
           
             steps {
                    
-                   withDockerRegistry( '', registryCredential ) {
-                   //withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+                   //withDockerRegistry( '', registryCredential ) {
+                   withDockerRegistry([ credentialsId: "dockerhubtestid", url: "" ]) {
                       
                    sh "echo 'Logged In.. Into Docker.'"
                    sh  'docker push muthudevopslearner/addressbook:v1'
