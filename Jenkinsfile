@@ -33,7 +33,7 @@ stage('Docker Build and Tag') {
           
             steps {
                    //withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
-                       docker.withRegistry( '', registryCredential ) {
+                       withDockerRegistry([ credentialsId: "DockerHub Credentials", url: "" ]) {	
                    sh "echo 'Logged In.. Into Docker.'"
                    sh  'docker push muthudevopslearner/addressbook:v1'
                    //  sh  'docker push muthudevopslearner/addressbook:$BUILD_NUMBER' 
