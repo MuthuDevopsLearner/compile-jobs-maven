@@ -43,4 +43,14 @@ stage('Docker Build and Tag') {
                    }
               }
      }
+       
+   stage ('Deploy App to K8's')
+          {
+                 steps {
+                        scripts {
+                               kubernetesDeploy(Configs: "addressbook.yml", kubeconfigId:"kubernetes")
+                        }
+                               
+                 }
+          }
  }
