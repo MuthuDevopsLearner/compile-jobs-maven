@@ -44,13 +44,11 @@ stage('Docker Build and Tag') {
               }
      }
        
-   stage ('Deploy App to Kubernetes')
-          {
-                 steps {
-                        
-                               //kubernetesDeploy(Configs: "addressbook.yml", kubeconfigId:"kubernetes")
-                               sh 'kubectl apply ./addressbook.yml'
-                                                       
-                 }
-          }
+   stage('Deploying addressbook container to Kubernetes') {
+      steps {
+        script {
+          kubernetesDeploy(configs: "addressbook.yaml")
+        }
+      }
+    }
  }
