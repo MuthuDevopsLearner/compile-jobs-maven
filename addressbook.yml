@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: addressbook-deploy-loadbalancer-service
+  labels:
+    name: addressbook-deploy-loadbalancer-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: addressbook-deploy-loadbalancer-service-app
+  template:
+    metadata:
+      name: addressbook-deploy-loadbalancer-service-pod
+      labels:
+        app: addressbook-deploy-loadbalancer-service-app
+    spec:
+      containers:
+      - name: address-deploy-loadbalancer-service-container
+        image: docker.io/muthudevopslearner/addressbook:v1
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: addressbook-vol
+          mountPath: /addressbook-vol
+      volumes:
+      - name: addressbook-vol
+        hostPath:
+          path: /addressbook-vol-path
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: addressbook-loadbalancer-service
+  labels:
+    name: addressbook-loadbalancer-service
+spec:
+  selector:
+    app: addressbook-deploy-loadbalancer-service-app
+  type: LoadBalancer
+  externalIPs:
+  - 192.168.230.135
+  ports:
+  - nodePort: 31323
+    port: 80
+    targetPort: 80
