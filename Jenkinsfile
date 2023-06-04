@@ -32,8 +32,8 @@ stage('Docker Build and Tag') {
   stage('Publish image to Docker Hub') {
           
             steps {
-                   //withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
-                       withDockerRegistry([ credentialsId: "DockerHub Credentials", url: "" ]) {	
+                   withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+                      
                    sh "echo 'Logged In.. Into Docker.'"
                    sh  'docker push muthudevopslearner/addressbook:v1'
                    //  sh  'docker push muthudevopslearner/addressbook:$BUILD_NUMBER' 
