@@ -32,7 +32,9 @@ stage('Docker Build and Tag') {
   stage('Publish image to Docker Hub') {
           
             steps {
-                   withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+                   registryCredential = 'dockerhubtestid'
+                   docker.withRegistry( '', registryCredential ) {
+                   //withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
                       
                    sh "echo 'Logged In.. Into Docker.'"
                    sh  'docker push muthudevopslearner/addressbook:v1'
