@@ -36,7 +36,7 @@ stage('Docker Build and Tag') {
                    //withDockerRegistry( '', registryCredential ) {
                    withDockerRegistry([ credentialsId: "dockerhubtestid", url: "" ]) {
                       
-                   sh "echo 'Logged In.. Into Docker.'"
+                   sh "echo 'Logged into Docker.'"
                    sh  'docker push muthudevopslearner/addressbook:v1'
                    //  sh  'docker push muthudevopslearner/addressbook:$BUILD_NUMBER' 
                    }  
