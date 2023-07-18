@@ -47,7 +47,7 @@ stage('Docker Build and Tag') {
    //stage('Deploying addressbook container to Kubernetes') {
       //steps {
         //script {
-          //kubernetesDeploy(configs: "addressbook.yaml")
+          //kubernetesDeploy(configs: 'addressbook.yaml' kubeconfigid:'kubernetescredential')
         //}
       //}
     //}
